@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Download Center</title>
+<title>Secure Access Portal</title>
 
 <style>
-
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -19,63 +18,76 @@ body {
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 50px;
-    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    padding: 40px;
+    border-radius: 15px;
     text-align: center;
     backdrop-filter: blur(10px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    max-width: 400px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    width: 300px;
 }
 
-h1 {
-    margin-bottom: 15px;
+input {
+    width: 80%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 15px;
+    font-size: 16px;
 }
 
-p {
-    margin-bottom: 30px;
-    opacity: 0.85;
-}
-
-.download-btn {
-    text-decoration: none;
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
     background: #00d4ff;
-    color: black;
-    padding: 15px 30px;
-    border-radius: 50px;
     font-weight: bold;
+    cursor: pointer;
     transition: 0.3s;
-    display: inline-block;
 }
 
-.download-btn:hover {
+button:hover {
     background: white;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255,255,255,0.6);
 }
 
-.footer {
-    margin-top: 25px;
-    font-size: 0.8em;
-    opacity: 0.6;
+.error {
+    margin-top: 15px;
+    color: #ff6b6b;
 }
-
 </style>
 </head>
 
 <body>
 
 <div class="container">
-    <h1>Congrats on completing the Challenge!</h1>
-    <p>Download this file. It's not a virus. Trust me.</p>
+    <h2>🔐 Secure Access</h2>
+    <p>Enter the access code</p>
 
-    <a href="Crypt Review Sheet.docx" download>Download File</a>
-        Not a Virus 😀
-    </a>
+    <input type="password" id="codeInput" placeholder="Enter Code">
+    <br>
+    <button onclick="checkCode()">Submit</button>
 
-    <div class="footer">
-    </div>
+    <div id="errorMessage" class="error"></div>
 </div>
+
+<script>
+
+function checkCode() {
+
+    // CHANGE YOUR CODE HERE
+    let correctCode = "CYBER123";
+
+    let userCode = document.getElementById("codeInput").value;
+
+    if(userCode === correctCode) {
+        window.location.href = "download.html";
+    } else {
+        document.getElementById("errorMessage").innerText = "Incorrect Code";
+    }
+}
+
+</script>
 
 </body>
 </html>
